@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
     private var progressRabbit = 0
     private var progressTurtle = 0
-
     private lateinit var btnStart: Button
     private lateinit var sbRabbit: SeekBar
     private lateinit var sbTurtle: SeekBar
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars: Insets = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -68,11 +66,9 @@ class MainActivity : AppCompatActivity() {
     private fun runRabbit() {
         Thread {
             val sleepProbability = arrayOf(true, true, false)
-
             while (progressRabbit <= 100 && progressTurtle < 100) {
                 try {
                     Thread.sleep(100)
-
                     if (sleepProbability.random()) {
                         Thread.sleep(300)
                     }
@@ -81,7 +77,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 progressRabbit += 3
-
                 val msg = Message()
                 msg.what = 1
                 handler.sendMessage(msg)
@@ -98,7 +93,6 @@ class MainActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 progressTurtle += 1
-
                 val msg = Message()
                 msg.what = 2
                 handler.sendMessage(msg)
